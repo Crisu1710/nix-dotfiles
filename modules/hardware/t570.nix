@@ -12,32 +12,46 @@ _: {
         (modulesPath + "/installer/scan/not-detected.nix")
       ];
 
+      # Bootloader.
+      # Starts with systemd-boot to get a bootable system. To move to
+      # Secure Boot with lanzaboote later, set `boot.lanzaboote.enable = true`,
+      # `boot.loader.systemd-boot.enable = lib.mkForce false`, and enroll keys
+      # via `sbctl create-keys` with firmware in Setup Mode.
+      boot.loader = {
+        systemd-boot.enable = true;
+        efi.canTouchEfiVariables = true;
+      };
+
       boot = {
         initrd = {
+          # TODO: replace with values from
+          # `nixos-generate-config --show-hardware-config`
           availableKernelModules = [
-            "nvme"
             "xhci_pci"
+            "ehci_pci"
             "ahci"
-            "thunderbolt"
+            "nvme"
             "usb_storage"
-            "usbhid"
             "sd_mod"
+            "rtsx_pci_sdmmc"
           ];
           kernelModules = [ ];
-          luks.devices."luks-XXXXXXXXX".device =
+          # TODO: replace the UUID and mapper name with your LUKS device.
+          luks.devices."luks-XXXXXXXX".device =
             "/dev/disk/by-uuid/XXXXXXXX";
         };
-        kernelModules = [ "kvm-amd" ];
+        kernelModules = [ "kvm-intel" ];
         extraModulePackages = [ ];
       };
 
       fileSystems = {
+        # TODO: replace device/UUID values with your generated hardware config.
         "/" = {
-          device = "/dev/mapper/luks-XXXXXXXXX";
+          device = "/dev/mapper/luks-XXXXXXXX";
           fsType = "ext4";
         };
         "/boot" = {
-          device = "/dev/disk/by-uuid/A87A-4C74";
+          device = "/dev/disk/by-uuid/XXXX-XXXX";
           fsType = "vfat";
           options = [
             "fmask=0077"
@@ -49,6 +63,6 @@ _: {
       swapDevices = [ ];
 
       nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
-      hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+      hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
     };
 }
