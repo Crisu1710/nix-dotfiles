@@ -37,6 +37,7 @@
         inputs.flake-parts.flakeModules.modules
         (inputs.import-tree ./modules)
         ./hosts/pc/default.nix
+        ./hosts/t570/default.nix
       ];
     };
 }
