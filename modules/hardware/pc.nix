@@ -24,8 +24,7 @@ _: {
             "sd_mod"
           ];
           kernelModules = [ ];
-          luks.devices."luks-XXXXXXXXX".device =
-            "/dev/disk/by-uuid/XXXXXXXX";
+          luks.devices."luks-XXXXXXXXX".device = "/dev/disk/by-uuid/XXXXXXXX";
         };
         kernelModules = [ "kvm-amd" ];
         extraModulePackages = [ ];
