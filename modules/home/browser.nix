@@ -5,7 +5,7 @@ _:
     { pkgs, ... }:
     {
       home.packages = with pkgs; [
-        mullvad-browser
+        firefox
       ];
     };
 }

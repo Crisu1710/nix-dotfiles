@@ -22,8 +22,6 @@ _:
         with pkgs;
         lib.optionals (!pkgs.stdenv.isDarwin) [
           ghostty
-          foot
-          kitty
         ];
 
       xdg.configFile."ghostty/config".text = ''
