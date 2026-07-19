@@ -15,7 +15,7 @@ _:
       in
       {
         home.packages = with pkgs; [
-          #discord
+          #discord #
           kdePackages.dolphin
           kdePackages.filelight
           xrandr
@@ -23,6 +23,8 @@ _:
           unrar
           rofi
           thunderbird
+          joplin-desktop
+          yubikey-manager
         ];
 
         xdg.configFile."rofi" = {

@@ -9,6 +9,8 @@ _:
 
       home.packages = with pkgs; [
         p7zip
+        lsd
+        dust
       ];
     };
 }

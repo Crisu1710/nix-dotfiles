@@ -29,6 +29,7 @@ _:
           unzip
           go
           cargo
+          awscli
         ]
         ++ lib.optionals (!pkgs.stdenv.isDarwin) [
           (pkgs.writeShellApplication {
@@ -42,6 +43,8 @@ _:
           })
           freelens-bin
           kubectl
+          dust
+          k9s
           dbeaver-bin
         ];
 

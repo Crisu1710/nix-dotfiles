@@ -6,6 +6,7 @@ _:
     {
       home.packages = with pkgs; [
         vlc
+        spotify
       ];
     };
 }
