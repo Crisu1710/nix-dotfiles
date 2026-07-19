@@ -25,6 +25,7 @@ _:
           thunderbird
           joplin-desktop
           yubikey-manager
+          supersonic
         ];
 
         xdg.configFile."rofi" = {
