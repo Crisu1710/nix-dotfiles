@@ -12,6 +12,11 @@ _: {
         (modulesPath + "/installer/scan/not-detected.nix")
       ];
 
+      boot.loader = {
+        systemd-boot.enable = true;
+        efi.canTouchEfiVariables = true;
+      };
+
       boot = {
         initrd = {
           availableKernelModules = [
@@ -24,7 +29,7 @@ _: {
             "sd_mod"
           ];
           kernelModules = [ ];
-          luks.devices."luks-XXXXXXXXX".device = "/dev/disk/by-uuid/XXXXXXXX";
+          luks.devices."luks-c901bcac-a07e-4c6b-9be0-d0e24e0d19e6".device = "/dev/disk/by-uuid/c901bcac-a07e-4c6b-9be0-d0e24e0d19e6";
         };
         kernelModules = [ "kvm-amd" ];
         extraModulePackages = [ ];
@@ -32,11 +37,15 @@ _: {
 
       fileSystems = {
         "/" = {
-          device = "/dev/mapper/luks-XXXXXXXXX";
+          device = "/dev/mapper/luks-c901bcac-a07e-4c6b-9be0-d0e24e0d19e6";
+          fsType = "ext4";
+        };
+        "/mnt/games" = {
+          device = "/dev/disk/by-uuid/4f96b204-be06-4ce4-8e4f-c38026f85da3";
           fsType = "ext4";
         };
         "/boot" = {
-          device = "/dev/disk/by-uuid/A87A-4C74";
+          device = "/dev/disk/by-uuid/12D8-E80A";
           fsType = "vfat";
           options = [
             "fmask=0077"
