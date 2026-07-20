@@ -54,6 +54,8 @@ _:
             "sudo"
             "git"
             "direnv"
+            "kubectl"
+            "kube-ps1"
           ];
         };
 
