@@ -10,6 +10,9 @@
           enable = true;
           xwayland.enable = true;
         };
+        kdeconnect = {
+          enable = true;
+        };
         dms-shell = {
           enable = true;
           systemd.enable = false;

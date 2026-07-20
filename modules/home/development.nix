@@ -57,6 +57,10 @@ _:
       programs.git = {
         enable = true;
         lfs.enable = true;
+        config = {
+          user.name = "Crisu1710";
+          user.email = "m2rs@posteo.de";
+        };
       };
 
       # Direnv
