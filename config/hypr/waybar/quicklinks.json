@@ -1,0 +1,28 @@
+{
+    "custom/quicklink2": {
+        "format": " ",
+        //"format": "🌐",
+        "on-click": "firefox",
+        "tooltip-format": "Open the browser"
+    },
+    "custom/quicklink3": {
+        "format": " ",
+        //"format": "📂",
+        "on-click": "thunar",
+        "tooltip-format": "Open the filemanager"
+    }, 
+    "custom/quicklink4": {
+        //"format": "🖥️",
+        "format": "",
+        "on-click": "ghostty",
+        "tooltip-format": "Open the Terminal"
+    }, 
+    "group/quicklinks": {
+        "orientation": "horizontal",
+        "modules": [
+            "custom/quicklink2",
+            "custom/quicklink3",
+            "custom/quicklink4"
+        ]
+    }
+}
