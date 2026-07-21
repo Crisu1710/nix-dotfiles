@@ -20,6 +20,7 @@
       # Nixpkgs
       nixpkgs = {
         config.allowUnfree = true;
+        config.permittedInsecurePackages = [ "electron-40.10.5" ];
         overlays = [
           inputs.self.overlays.additions
           inputs.self.overlays.modifications
